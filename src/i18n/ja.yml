@@ -34,6 +34,7 @@ commands:
     pin:
       not_pinnable:
         description: "このメッセージはピン留め出来ません。\n管理者にBotの権限を確認する様依頼してください。\n"
+        title: ❌ エラー
       name: メッセージをピン留め
       pinned:
         description: メッセージはピン留めされました。
