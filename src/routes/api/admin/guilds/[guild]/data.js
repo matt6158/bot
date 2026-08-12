@@ -5,9 +5,14 @@ module.exports.get = fastify => ({
 		const id = req.params.guild;
 		const guild = client.guilds.cache.get(id) ?? {};
 		const { query } = req.query;
-		if (!query) return {};
-		const data = query.split(/\./g).reduce((acc, part) => acc && acc[part], guild);
-		return data;
+		switch (query ?? '') {
+		case 'channels.cache':
+			return guild.channels.cache;
+		case 'roles.cache':
+			return guild.roles.cache;
+		default:
+			return {};
+		}
 	},
 	onRequest: [fastify.authenticate, fastify.isAdmin],
 });
